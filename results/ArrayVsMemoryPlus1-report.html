@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>ArrayVsMemoryPlus1-20211223-170352</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19041.1415 (2004/May2020Update/20H1)
+Intel Core i7-9700 CPU 3.00GHz, 1 CPU, 8 logical and 8 physical cores
+  [Host]   : .NET Framework 4.8 (4.8.4420.0), X64 RyuJIT
+  .NET 6.0 : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
+  Mono     : Mono 6.12.0 (Visual Studio), X64 
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>     Method</th><th>Job</th><th>Runtime</th><th>Size</th><th>  Mean</th><th>Error</th><th>StdDev</th>
+</tr>
+</thead><tbody><tr><td>MemoryPlus1</td><td>.NET 6.0</td><td>.NET 6.0</td><td>64</td><td>30.99 ns</td><td>0.052 ns</td><td>0.046 ns</td>
+</tr><tr><td>MemoryPlus1Random</td><td>.NET 6.0</td><td>.NET 6.0</td><td>64</td><td>55.94 ns</td><td>0.355 ns</td><td>0.315 ns</td>
+</tr><tr><td>ArrayPlus1</td><td>.NET 6.0</td><td>.NET 6.0</td><td>64</td><td>33.33 ns</td><td>0.048 ns</td><td>0.045 ns</td>
+</tr><tr><td>ArrayPlus1Random</td><td>.NET 6.0</td><td>.NET 6.0</td><td>64</td><td>57.42 ns</td><td>0.788 ns</td><td>0.615 ns</td>
+</tr><tr><td>MemoryPlus1</td><td>Mono</td><td>Mono</td><td>64</td><td>116.53 ns</td><td>0.092 ns</td><td>0.077 ns</td>
+</tr><tr><td>MemoryPlus1Random</td><td>Mono</td><td>Mono</td><td>64</td><td>254.50 ns</td><td>0.296 ns</td><td>0.247 ns</td>
+</tr><tr><td>ArrayPlus1</td><td>Mono</td><td>Mono</td><td>64</td><td>42.38 ns</td><td>0.248 ns</td><td>0.232 ns</td>
+</tr><tr><td>ArrayPlus1Random</td><td>Mono</td><td>Mono</td><td>64</td><td>181.89 ns</td><td>0.199 ns</td><td>0.187 ns</td>
+</tr><tr><td>MemoryPlus1</td><td>.NET 6.0</td><td>.NET 6.0</td><td>512</td><td>238.45 ns</td><td>0.269 ns</td><td>0.225 ns</td>
+</tr><tr><td>MemoryPlus1Random</td><td>.NET 6.0</td><td>.NET 6.0</td><td>512</td><td>472.48 ns</td><td>0.412 ns</td><td>0.365 ns</td>
+</tr><tr><td>ArrayPlus1</td><td>.NET 6.0</td><td>.NET 6.0</td><td>512</td><td>269.21 ns</td><td>0.697 ns</td><td>0.618 ns</td>
+</tr><tr><td>ArrayPlus1Random</td><td>.NET 6.0</td><td>.NET 6.0</td><td>512</td><td>454.11 ns</td><td>1.155 ns</td><td>0.965 ns</td>
+</tr><tr><td>MemoryPlus1</td><td>Mono</td><td>Mono</td><td>512</td><td>776.40 ns</td><td>12.167 ns</td><td>10.786 ns</td>
+</tr><tr><td>MemoryPlus1Random</td><td>Mono</td><td>Mono</td><td>512</td><td>1,428.48 ns</td><td>1.990 ns</td><td>1.861 ns</td>
+</tr><tr><td>ArrayPlus1</td><td>Mono</td><td>Mono</td><td>512</td><td>326.55 ns</td><td>0.461 ns</td><td>0.408 ns</td>
+</tr><tr><td>ArrayPlus1Random</td><td>Mono</td><td>Mono</td><td>512</td><td>1,005.22 ns</td><td>1.129 ns</td><td>1.056 ns</td>
+</tr><tr><td>MemoryPlus1</td><td>.NET 6.0</td><td>.NET 6.0</td><td>2048</td><td>933.82 ns</td><td>0.985 ns</td><td>0.922 ns</td>
+</tr><tr><td>MemoryPlus1Random</td><td>.NET 6.0</td><td>.NET 6.0</td><td>2048</td><td>1,753.00 ns</td><td>2.018 ns</td><td>1.789 ns</td>
+</tr><tr><td>ArrayPlus1</td><td>.NET 6.0</td><td>.NET 6.0</td><td>2048</td><td>1,059.56 ns</td><td>2.021 ns</td><td>1.792 ns</td>
+</tr><tr><td>ArrayPlus1Random</td><td>.NET 6.0</td><td>.NET 6.0</td><td>2048</td><td>1,882.02 ns</td><td>1.463 ns</td><td>1.369 ns</td>
+</tr><tr><td>MemoryPlus1</td><td>Mono</td><td>Mono</td><td>2048</td><td>3,040.32 ns</td><td>12.504 ns</td><td>11.085 ns</td>
+</tr><tr><td>MemoryPlus1Random</td><td>Mono</td><td>Mono</td><td>2048</td><td>5,365.55 ns</td><td>5.498 ns</td><td>4.873 ns</td>
+</tr><tr><td>ArrayPlus1</td><td>Mono</td><td>Mono</td><td>2048</td><td>1,294.10 ns</td><td>1.750 ns</td><td>1.366 ns</td>
+</tr><tr><td>ArrayPlus1Random</td><td>Mono</td><td>Mono</td><td>2048</td><td>3,827.26 ns</td><td>8.409 ns</td><td>7.865 ns</td>
+</tr><tr><td>MemoryPlus1</td><td>.NET 6.0</td><td>.NET 6.0</td><td>4096</td><td>1,863.67 ns</td><td>2.407 ns</td><td>2.251 ns</td>
+</tr><tr><td>MemoryPlus1Random</td><td>.NET 6.0</td><td>.NET 6.0</td><td>4096</td><td>3,540.82 ns</td><td>10.480 ns</td><td>9.803 ns</td>
+</tr><tr><td>ArrayPlus1</td><td>.NET 6.0</td><td>.NET 6.0</td><td>4096</td><td>2,112.11 ns</td><td>2.500 ns</td><td>2.216 ns</td>
+</tr><tr><td>ArrayPlus1Random</td><td>.NET 6.0</td><td>.NET 6.0</td><td>4096</td><td>3,688.03 ns</td><td>14.155 ns</td><td>12.548 ns</td>
+</tr><tr><td>MemoryPlus1</td><td>Mono</td><td>Mono</td><td>4096</td><td>5,852.65 ns</td><td>82.278 ns</td><td>76.963 ns</td>
+</tr><tr><td>MemoryPlus1Random</td><td>Mono</td><td>Mono</td><td>4096</td><td>10,749.65 ns</td><td>14.667 ns</td><td>13.720 ns</td>
+</tr><tr><td>ArrayPlus1</td><td>Mono</td><td>Mono</td><td>4096</td><td>2,579.58 ns</td><td>2.044 ns</td><td>1.912 ns</td>
+</tr><tr><td>ArrayPlus1Random</td><td>Mono</td><td>Mono</td><td>4096</td><td>7,785.77 ns</td><td>23.392 ns</td><td>20.736 ns</td>
+</tr><tr><td>MemoryPlus1</td><td>.NET 6.0</td><td>.NET 6.0</td><td>8192</td><td>3,722.81 ns</td><td>3.330 ns</td><td>3.115 ns</td>
+</tr><tr><td>MemoryPlus1Random</td><td>.NET 6.0</td><td>.NET 6.0</td><td>8192</td><td>7,565.93 ns</td><td>17.170 ns</td><td>16.061 ns</td>
+</tr><tr><td>ArrayPlus1</td><td>.NET 6.0</td><td>.NET 6.0</td><td>8192</td><td>4,231.46 ns</td><td>4.322 ns</td><td>3.832 ns</td>
+</tr><tr><td>ArrayPlus1Random</td><td>.NET 6.0</td><td>.NET 6.0</td><td>8192</td><td>7,640.85 ns</td><td>10.831 ns</td><td>9.602 ns</td>
+</tr><tr><td>MemoryPlus1</td><td>Mono</td><td>Mono</td><td>8192</td><td>11,852.39 ns</td><td>58.966 ns</td><td>55.157 ns</td>
+</tr><tr><td>MemoryPlus1Random</td><td>Mono</td><td>Mono</td><td>8192</td><td>21,564.19 ns</td><td>33.788 ns</td><td>29.952 ns</td>
+</tr><tr><td>ArrayPlus1</td><td>Mono</td><td>Mono</td><td>8192</td><td>5,219.00 ns</td><td>8.256 ns</td><td>7.722 ns</td>
+</tr><tr><td>ArrayPlus1Random</td><td>Mono</td><td>Mono</td><td>8192</td><td>15,514.00 ns</td><td>33.764 ns</td><td>31.583 ns</td>
+</tr></tbody></table>
+</body>
+</html>
