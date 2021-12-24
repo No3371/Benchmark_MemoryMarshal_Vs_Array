@@ -9,6 +9,7 @@ This benchmark compares performance of:
 
 - .NET6 is just better than Mono in all aspects.
 - `Span` on .Net6 is generally 3x faster than on Mono.
+  -  .Net6 even performs 100% faster than Mono on 4096/8192 array access.
 - On.Net6, `Span` is even faster than plain array access.
   - Linear access can gain 50% boost.
   - However, random access is about the same as fast as plain array access.
